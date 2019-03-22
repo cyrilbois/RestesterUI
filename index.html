@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>RestesterUI</title>
+	<script src="./external/codemirror/codemirror.js"></script>
+	<link href="./external/codemirror/codemirror.css" rel="stylesheet" />
+	<script src="./external/codemirror/mode/javascript/javascript.js"></script>
+	<script src="./external/jsonpath-plus/lib/jsonpath.js"></script>
+	<script src="./RestesterUI.js"></script>
+	<link href="./RestesterUI.css" rel="stylesheet" />
+</head>
+<body>
+	<h1 class="RestesterUI">RestesterUI</h1>
+	<div id="editor"></div>
+	<script>
+		var editor = new Editor();
+		editor.init();
+		editor.addWidget((new RESTRequestMenu(editor.toolBox)));
+		editor.addWidget((new ExtractionMenu(editor.toolBox)));
+		editor.addWidget((new AssertionMenu(editor.toolBox)));
+		editor.addWidget((new ScriptMenu(editor.toolBox)));
+		document.getElementById('editor').appendChild(editor.container);
+		editor.addTest();
+		editor.loadFavorites();
+		editor.listFavorites();
+	</script>
+</body>
+</html>
